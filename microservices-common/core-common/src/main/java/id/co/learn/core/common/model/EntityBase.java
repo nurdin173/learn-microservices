@@ -1,11 +1,7 @@
 package id.co.learn.core.common.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.*;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.io.Serial;
@@ -18,6 +14,7 @@ public class EntityBase implements Serializable {
     private static final long serialVersionUID = -917598374644711216L;
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(length = 50)
+    @Id
     private Long id;
     @Column(length = 500)
     private String description;

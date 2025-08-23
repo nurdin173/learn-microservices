@@ -1,0 +1,21 @@
+spring:
+  config:
+    activate:
+      on-profile: dev
+  datasource:
+    url: jdbc:postgresql://localhost:5432/book-store
+    username: nurdin
+    password: postgres
+server:
+  port: 9901
+  servlet:
+    context-path: /api
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: prod
+server:
+  port: 8080

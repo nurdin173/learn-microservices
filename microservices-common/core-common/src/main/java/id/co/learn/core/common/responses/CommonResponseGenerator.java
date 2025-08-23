@@ -1,7 +1,6 @@
 package id.co.learn.core.common.responses;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Component;
 
 @Component

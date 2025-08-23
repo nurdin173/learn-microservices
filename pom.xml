@@ -8,7 +8,7 @@
 		<version>3.5.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>id.co</groupId>
+	<groupId>id.co.learn</groupId>
 	<artifactId>learn-microservices</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
