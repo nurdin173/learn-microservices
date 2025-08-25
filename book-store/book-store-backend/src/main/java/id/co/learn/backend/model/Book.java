@@ -10,8 +10,7 @@ import java.math.BigDecimal;
 
 @Entity
 @Table(name = "book")
-@Getter
-@Setter
+@Getter @Setter
 public class Book extends ReferenceBase {
     private String title;
     private String author;

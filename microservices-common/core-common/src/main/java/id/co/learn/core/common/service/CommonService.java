@@ -1,7 +1,6 @@
 package id.co.learn.core.common.service;
 
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 
 import java.util.List;
@@ -15,7 +14,7 @@ public interface CommonService<T, Z> {
 
     Boolean delete (Z pk) throws Exception;
 
-    List<T> getPageableList() throws Exception;
+    List<T> findAll() throws Exception;
 
-    Page<T> getPageableList(String sSearch, int startPage, int pageSize, Sort sort) throws Exception;
+    Page<T> getPageable(String sSearch, int startPage, int pageSize, Sort sort) throws Exception;
 }

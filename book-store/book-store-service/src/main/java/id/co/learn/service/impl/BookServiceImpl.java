@@ -5,10 +5,10 @@ import id.co.learn.backend.repository.BookRepository;
 import id.co.learn.core.common.utility.DataTableObject;
 import id.co.learn.service.BookService;
 import id.co.learn.service.wrapper.BookWrapper;
+import lombok.RequiredArgsConstructor;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
@@ -20,11 +20,11 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class BookServiceImpl implements BookService {
-    private Logger logger = LogManager.getLogger(BookServiceImpl.class);
+    private static final Logger logger = LogManager.getLogger(BookServiceImpl.class);
 
-    @Autowired
-    private BookRepository bookRepository;
+    private final BookRepository bookRepository;
 
     private Book toEntity(BookWrapper wrapper) {
         Book model = new Book();
@@ -91,14 +91,14 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public List<BookWrapper> getPageableList() throws Exception {
-        logger.info("getPageableList()");
+    public List<BookWrapper> findAll() throws Exception {
+        logger.info("findAll()");
         return toWrapperList(bookRepository.findAll());
     }
 
     @Override
-    public Page<BookWrapper> getPageableList(String sSearch, int startPage, int pageSize, Sort sort) throws Exception {
-        logger.info("getPageableList()");
+    public Page<BookWrapper> getPageable(String sSearch, int startPage, int pageSize, Sort sort) throws Exception {
+        logger.info("getPageable()");
         int page = DataTableObject.getPageFromStartAndLength(startPage, pageSize);
         try {
             Page<Book> pageableModel = bookRepository.getPageable(sSearch, PageRequest.of(page, pageSize, sort));
