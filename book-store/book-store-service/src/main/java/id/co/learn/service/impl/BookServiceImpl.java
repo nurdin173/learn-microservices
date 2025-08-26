@@ -58,7 +58,7 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public BookWrapper save(BookWrapper entity) throws Exception {
+    public BookWrapper save(BookWrapper entity)  {
         return toWrapper(bookRepository.save(toEntity(entity)));
     }
 
@@ -91,7 +91,7 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public List<BookWrapper> findAll() throws Exception {
+    public List<BookWrapper> findAll() {
         logger.info("findAll()");
         return toWrapperList(bookRepository.findAll());
     }

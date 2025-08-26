@@ -1,6 +1,7 @@
 package id.co.learn.core.common.audit;
 
 import jakarta.servlet.http.HttpServletRequest;
+import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
@@ -17,6 +18,7 @@ public class AppAuditAware implements AuditorAware<String> {
     private HttpServletRequest request;
 
     @Override
+    @NonNull
     public Optional<String> getCurrentAuditor() {
         String loggedUser = request.getHeader("loggedUser");
         if (loggedUser == null) return Optional.of("SYSTEM");
