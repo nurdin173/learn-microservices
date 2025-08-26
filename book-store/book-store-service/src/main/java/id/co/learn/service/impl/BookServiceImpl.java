@@ -63,7 +63,7 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public BookWrapper getById(Long id) throws Exception {
+    public BookWrapper getById(Long id) {
         logger.info("getById({})", id);
         Optional<Book> book = bookRepository.findById(id);
         return book.map(this::toWrapper).orElse(null);
@@ -108,5 +108,18 @@ public class BookServiceImpl implements BookService {
             logger.error(e);
             throw new Exception("Get Book Error");
         }
+    }
+
+    @Override
+    public BookWrapper update(BookWrapper bookWrapper) throws IllegalThreadStateException {
+        logger.info("update()");
+        if(bookWrapper.getId() == null){
+            throw new IllegalStateException("Id cannot be null");
+        }
+        BookWrapper oldData = getById(bookWrapper.getId());
+
+        BeanUtils.copyProperties(bookWrapper, oldData, "id", "version", "createdDate", "createdBy");
+
+        return toWrapper(bookRepository.save(toEntity(oldData)));
     }
 }

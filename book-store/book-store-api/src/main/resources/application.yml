@@ -1,3 +1,4 @@
+#Dev Environment
 spring:
   config:
     activate:
@@ -16,6 +17,7 @@ server:
 
 ---
 
+#Production Environment
 spring:
   config:
     activate:
